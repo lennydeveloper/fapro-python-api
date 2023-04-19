@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
-from fastapi import FastAPI
+from fastapi import FastAPI, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Union
 from datetime import datetime, date
@@ -101,14 +101,16 @@ def generar_unidades_fomento(fecha: str = None):
     
 
 @app.get('/consulta-sii')
-async def consulta_unidad_fomento(fecha: Union[str, None] = None):
+async def consulta_unidad_fomento(response: Response, fecha: Union[str, None] = None):
     '''
     Obtiene una fecha a través del Query Param: fecha
     retorna un JSON con el valor de la unidad
     '''
     try:
         valor_unidad = generar_unidades_fomento(fecha)
-        if type(valor_unidad) != str: return valor_unidad
+        if type(valor_unidad) != str:
+            response.status_code = status.HTTP_400_BAD_REQUEST
+            return valor_unidad
 
         return {
             'fecha_ingresada': fecha,
