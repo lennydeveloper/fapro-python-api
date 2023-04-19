@@ -25,6 +25,10 @@ pip install -r requirements.txt
 uvicorn main:app
 ```
 
+### Despliegue
+
+El sitio (backend) se encuentra desplegado en el siguiente [enlace](https://fapro-python-api.onrender.com)
+
 ### Endpoints
 
 - 127.0.0.1:8000/consulta-sii
