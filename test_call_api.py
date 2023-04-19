@@ -1,6 +1,6 @@
 import requests
 
-ENDPOINT = 'http://127.0.0.1:8000/consulta-sii{0}'
+ENDPOINT = 'https://fapro-python-api.onrender.com/consulta-sii{0}'
 
 errores = {
     'tipo_fecha': 'El formato de fecha no coincide. Intente nuevamente con el formato DD-MM-YYYY',
